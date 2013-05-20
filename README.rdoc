@@ -1,13 +1,15 @@
-= Settingslogic
+= ReadWriteSettings
 
-Settingslogic is a simple configuration / settings solution that uses an ERB enabled YAML file. It has been great for
-our apps, maybe you will enjoy it too.  Settingslogic works with Rails, Sinatra, or any Ruby project.
+ReadWriteSettings is a simple configuration / settings solution that uses an ERB enabled YAML file. It has been great for
+our apps, maybe you will enjoy it too.  ReadWriteSettings works with Rails, Sinatra, or any Ruby project.
+
+It is a fork of {Settingslogic}[http://github.com/binarylogic/settingslogic] to support modifications and additional getting/setter methods. Hopefully can merge this fork back into Settingslogic in future and have a single project again.
 
 == Helpful links
 
-*	<b>Documentation:</b> http://rdoc.info/projects/binarylogic/settingslogic
-*	<b>Repository:</b> http://github.com/binarylogic/settingslogic/tree/master
-* <b>Issues:</b> http://github.com/binarylogic/settingslogic/issues
+*	<b>Documentation:</b> http://rdoc.info/projects/drnic/readwritesettings
+*	<b>Repository:</b> http://github.com/drnic/readwritesettings/tree/master
+* <b>Issues:</b> http://github.com/drnic/readwritesettings/issues
 
 == Installation
 
@@ -151,7 +153,9 @@ Finally, you can reload all your settings later as well:
 
 This is useful if you want to support changing your settings YAML without restarting your app.
 
-== Author
+== History
 
 Copyright (c) 2008-2010 {Ben Johnson}[http://github.com/binarylogic] of {Binary Logic}[http://www.binarylogic.com],
 released under the MIT license.  Support for optional settings and reloading by {Nate Wiger}[http://nate.wiger.org].
+
+Copyright (c) 2013 {Dr Nic Williams}[http://github.com/drnic]
