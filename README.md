@@ -3,7 +3,7 @@
 ReadWriteSettings is a simple configuration / settings solution that uses an ERB enabled YAML file. It has been great for
 our apps, maybe you will enjoy it too.  ReadWriteSettings works with Rails, Sinatra, or any Ruby project.
 
-It is a fork of {ReadWriteSettings}[http://github.com/binarylogic/settingslogic] to support modifications and additional getting/setter methods. Hopefully can merge this fork back into ReadWriteSettings in future and have a single project again.
+It is a fork of [ReadWriteSettings](http://github.com/binarylogic/settingslogic) to support modifications and additional getting/setter methods. Hopefully can merge this fork back into Settingslogic in future and have a single project again.
 
 ## Helpful links
 
@@ -188,9 +188,9 @@ This is useful if you want to support changing your settings YAML without restar
 
 ## History
 
-This project was originally created by Ben Johnson and called ReadWriteSettings. A renamed fork was created so that new gem versions could be released with new functionality, by Dr Nic Williams. The latter is not entirely thrilled about this situation; but at least he now has a versioned gem with the new shiny stuff in it.
+This project was originally created by Ben Johnson and called Settingslogic. A renamed fork was created so that new gem versions could be released with new functionality, by Dr Nic Williams. The latter is not entirely thrilled about this situation; but at least he now has a versioned gem with the new shiny stuff in it.
 
-Copyright (c) 2008-2010 {Ben Johnson}[http://github.com/binarylogic] of {Binary Logic}[http://www.binarylogic.com],
-released under the MIT license.  Support for optional settings and reloading by {Nate Wiger}[http://nate.wiger.org].
+Copyright (c) 2008-2010 [Ben Johnson](http://github.com/binarylogic) of [Binary Logic](http://www.binarylogic.com),
+released under the MIT license.  Support for optional settings and reloading by [Nate Wiger](http://nate.wiger.org).
 
-Copyright (c) 2013 {Dr Nic Williams}[http://github.com/drnic]
+Copyright (c) 2013 [Dr Nic Williams](http://github.com/drnic)
