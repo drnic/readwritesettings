@@ -3,7 +3,7 @@ require "erb"
 require 'open-uri'
 
 # A simple settings solution using a YAML file. See README for more information.
-class Settingslogic < Hash
+class ReadWriteSettings < Hash
   class MissingSetting < StandardError; end
 
   class << self
@@ -95,7 +95,7 @@ class Settingslogic < Hash
     #puts "new! #{hash_or_file}"
     case hash_or_file
     when nil
-      raise Errno::ENOENT, "No file specified as Settingslogic source"
+      raise Errno::ENOENT, "No file specified as ReadWriteSettings source"
     when Hash
       self.replace hash_or_file
     else
@@ -133,14 +133,14 @@ class Settingslogic < Hash
 
   # Create a nested structure and set value.
   # For example: set("foo.bar.tar", 123)
-  # Resulting Settingslogic/Hash:
+  # Resulting ReadWriteSettings/Hash:
   # { "foo" => { "bar" => { "tar" => 123 }}}
   def set(nested_key, val)
     target_settings_field = self
     settings_key_portions = nested_key.to_s.split(".")
     parent_key_portions, final_key = settings_key_portions[0..-2], settings_key_portions[-1]
     parent_key_portions.each do |key_portion|
-      target_settings_field[key_portion] ||= Settingslogic.new({})
+      target_settings_field[key_portion] ||= ReadWriteSettings.new({})
       target_settings_field = target_settings_field[key_portion]
     end
     target_settings_field[final_key] = val
@@ -154,7 +154,7 @@ class Settingslogic < Hash
     settings_key_portions = nested_key.to_s.split(".")
     parent_key_portions, final_key = settings_key_portions[0..-2], settings_key_portions[-1]
     parent_key_portions.each do |key_portion|
-      target_settings_field[key_portion] ||= Settingslogic.new({})
+      target_settings_field[key_portion] ||= ReadWriteSettings.new({})
       target_settings_field = target_settings_field[key_portion]
     end
     target_settings_field[final_key] ||= val
@@ -166,7 +166,7 @@ class Settingslogic < Hash
     settings_key_portions = nested_key.to_s.split(".")
     parent_key_portions, final_key = settings_key_portions[0..-2], settings_key_portions[-1]
     parent_key_portions.each do |key_portion|
-      target_settings_field[key_portion] ||= Settingslogic.new({})
+      target_settings_field[key_portion] ||= ReadWriteSettings.new({})
       target_settings_field = target_settings_field[key_portion]
     end
     target_settings_field[final_key]
@@ -178,7 +178,7 @@ class Settingslogic < Hash
     Hash[self]
   end
 
-  # Convert all nested Settingslogic objects to Hash objects
+  # Convert all nested ReadWriteSettings objects to Hash objects
   def to_nested_hash
     inject({}) do |hash, key_value|
       key, value = key_value

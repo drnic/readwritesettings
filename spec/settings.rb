@@ -1,6 +1,6 @@
-class Settings < Settingslogic
+class Settings < ReadWriteSettings
   source "#{File.dirname(__FILE__)}/settings.yml"
 end
 
-class SettingsInst < Settingslogic
+class SettingsInst < ReadWriteSettings
 end

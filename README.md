@@ -3,7 +3,7 @@
 ReadWriteSettings is a simple configuration / settings solution that uses an ERB enabled YAML file. It has been great for
 our apps, maybe you will enjoy it too.  ReadWriteSettings works with Rails, Sinatra, or any Ruby project.
 
-It is a fork of {Settingslogic}[http://github.com/binarylogic/settingslogic] to support modifications and additional getting/setter methods. Hopefully can merge this fork back into Settingslogic in future and have a single project again.
+It is a fork of {ReadWriteSettings}[http://github.com/binarylogic/settingslogic] to support modifications and additional getting/setter methods. Hopefully can merge this fork back into ReadWriteSettings in future and have a single project again.
 
 ## Helpful links
 
@@ -28,7 +28,7 @@ Instead of defining a Settings constant for you, that task is left to you. Simpl
 that looks like:
 
 ``` ruby
-class Settings < Settingslogic
+class Settings < ReadWriteSettings
   source "#{Rails.root}/config/application.yml"
   namespace Rails.env
 end
@@ -38,6 +38,12 @@ Name it Settings, name it Config, name it whatever you want. Add as many or as f
 this file in a rails app is app/models/settings.rb
 
 I felt adding a settings file in your app was more straightforward, less tricky, and more flexible.
+
+Alternately, you can pass a Hash into the constructor.
+
+``` ruby
+Settings = ReadWriteSettings.new({"key" => "value"})
+```
 
 ### 2. Create your settings
 
@@ -81,7 +87,7 @@ YAML::ENGINE.yamler= 'syck'
 => "development"
 
 >> Settings.cool
-=> "#<Settingslogic::Settings ... >"
+=> "#<ReadWriteSettings::Settings ... >"
 
 >> Settings.cool.saweet
 => "nested settings"
@@ -139,7 +145,7 @@ While it's useful to stop and highlight an error in development or test environm
 often not the right answer for production.
 
 ``` ruby
-class Settings < Settingslogic
+class Settings < ReadWriteSettings
   source "#{Rails.root}/config/application.yml"
   namespace Rails.env
   suppress_errors Rails.env.production?
@@ -158,11 +164,11 @@ in the global Object namespace:
 set :application, "myapp"  # does "def application" globally
 ```
 
-This can cause collisions with Settingslogic, since those methods are global. Luckily, the
+This can cause collisions with ReadWriteSettings, since those methods are global. Luckily, the
 solution is to just add a call to load! in your class:
 
 ``` ruby
-class Settings < Settingslogic
+class Settings < ReadWriteSettings
   source "#{Rails.root}/config/application.yml"
   namespace Rails.env
   load!
@@ -182,7 +188,7 @@ This is useful if you want to support changing your settings YAML without restar
 
 ## History
 
-This project was originally created by Ben Johnson and called Settingslogic. A renamed fork was created so that new gem versions could be released with new functionality, by Dr Nic Williams. The latter is not entirely thrilled about this situation; but at least he now has a versioned gem with the new shiny stuff in it.
+This project was originally created by Ben Johnson and called ReadWriteSettings. A renamed fork was created so that new gem versions could be released with new functionality, by Dr Nic Williams. The latter is not entirely thrilled about this situation; but at least he now has a versioned gem with the new shiny stuff in it.
 
 Copyright (c) 2008-2010 {Ben Johnson}[http://github.com/binarylogic] of {Binary Logic}[http://www.binarylogic.com],
 released under the MIT license.  Support for optional settings and reloading by {Nate Wiger}[http://nate.wiger.org].
