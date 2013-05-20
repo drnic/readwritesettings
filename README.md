@@ -107,6 +107,12 @@ class Post < ActiveRecord::Base
 end
 ```
 
+You can also enquire about a nested setting. `exists?` returns the value or nil if the nested setting is set.
+
+``` ruby
+Settings.exists?("cool.sweet.thing")
+```
+
 ### 4. Optional / dynamic settings
 
 Often, you will want to handle defaults in your application logic itself, to reduce the number of settings
@@ -153,6 +159,29 @@ end
 
 >> Settings.non_existent_key
 => nil
+```
+
+### 6. Changes and saving settings
+
+In ReadWriteSettings v3.0+ (the fork of Settingslogic) there are more helpers for changing the settings and saving them back to disk.
+
+``` ruby
+settings = ReadWriteSettings.new({})
+settings.set_default("some.interesting.default", "value")
+settings
+=> {"some"=>{"interesting"=>{"default"=>"value"}}} 
+
+settings.set_default("some.interesting.default", "CHANGE")
+settings
+=> {"some"=>{"interesting"=>{"default"=>"value"}}} 
+
+settings.set("some.interesting.default", "CHANGE")
+settings
+=> {"some"=>{"interesting"=>{"default"=>"CHANGE"}}} 
+
+settings.save("/tmp/settings.yml")
+ReadWriteSettings.new("/tmp/settings.yml")
+=> {"some"=>{"interesting"=>{"default"=>"CHANGE"}}} 
 ```
 
 ## Note on Sinatra / Capistrano / Vlad
