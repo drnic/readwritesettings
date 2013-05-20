@@ -9,6 +9,8 @@ It is a fork of {Settingslogic}[http://github.com/binarylogic/settingslogic] to 
 
 * <b>Issues:</b> http://github.com/drnic/readwritesettings/issues
 * <b>Source:</b> http://github.com/drnic/readwritesettings
+* [![Build Status](https://travis-ci.org/drnic/readwritesettings.png?branch=master)](https://travis-ci.org/drnic/readwritesettings)
+* [![Code Climate](https://codeclimate.com/github/drnic/readwritesettings.png)](https://codeclimate.com/github/drnic/readwritesettings)
 
 ## Installation
 
